@@ -37,7 +37,11 @@
                 _split = $(element).attr("class").split("-");
                 var _append = "";
                 for (i = 0; i < _split[2]; i++)
-                    _append += "<li>"+_getWord()+"</li>";
+                    if (_split[1] == "li")
+                        _append += "<li>"+_getWord()+"</li>";
+                    else if (_split[1] == "lia")
+                        _append += "<li><a href='#'>"+_getWord()+"</a></li>";
+
                 $(element).append(_append);
                 break;
             case "A":
@@ -47,7 +51,7 @@
                 break;
         }
     };
-    
+
     $.fn.dummy = function () {
         return this.each(function () {
             dummy(this);
